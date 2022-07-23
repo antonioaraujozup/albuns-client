@@ -1,0 +1,30 @@
+server:
+  port: 8081
+  error:
+    include-message: always
+
+feign:
+  client:
+    config:
+      albunsClient:
+        loggerLevel: full
+        decode404: true
+
+logging:
+  level:
+    org.springframework.web.client: DEBUG
+    br.com.zup.edu.albunsclient.client.AlbunsClient: DEBUG
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          albuns:
+            authorization-grant-type: client_credentials
+            client-id: albuns-freemium-client
+            client-secret: xMQR37cudss2vVL3aNRd7UjCIPyL374C
+            scope: albuns:read, albuns:write
+        provider:
+          albuns:
+            token-uri: http://localhost:18080/realms/minhas-figurinhas/protocol/openid-connect/token
